@@ -19,7 +19,8 @@ class GenerateDocsCommand extends Command
                             {--max-tokens= : Maximum tokens for API calls (default: from config or 10000)}
                             {--extensions=* : File extensions to process (default: from config or php, yaml, yml)}
                             {--skip=* : Subdirectories to skip (default: from config or vendor/, node_modules/, tests/, cache/)}
-                            {--api-provider= : API provider to use (default: from config or openai)}';
+                            {--api-provider= : API provider to use (default: from config or openai)}
+                            {--template= : Markdown template to use (absolute path to .md file) (default: default-prompt.md from library)'};
 
     /**
      * The console command description.
@@ -98,11 +99,16 @@ class GenerateDocsCommand extends Command
         }, $sourceDirs);
         
         $outputDir = base_path($outputDir);
+
+        $template = $this->option('template');
         
         $this->info('Starting documentation generation...');
         $this->info('Source directories: ' . implode(', ', $sourceDirs));
         $this->info('Output directory: ' . $outputDir);
         $this->info('API provider: ' . $apiProvider);
+        if(!empty($template)){
+            $this->info('Prompt template: ' . $template);
+        }
         
         try {
             $generator = new Docudoodle(
@@ -115,7 +121,8 @@ class GenerateDocsCommand extends Command
                 $skipSubdirs,
                 $apiProvider,
                 $ollamaHost,
-                $ollamaPort
+                $ollamaPort,
+                $template
             );
             
             $generator->generate();
