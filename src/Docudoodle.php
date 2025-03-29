@@ -140,6 +140,14 @@ class Docudoodle
     }
 
     /**
+     * Remove <think></think> tags from the response
+     */
+    private function cleanResponse(string $response): string
+    {
+        return preg_replace('/<think>.*?<\/think>/', '', $response);
+    }
+
+    /**
      * Generate documentation using the selected API provider
      */
     private function generateDocumentation($filePath, $content): string
@@ -660,7 +668,8 @@ class Docudoodle
             $responseData = json_decode($response, true);
 
             if (isset($responseData["message"]["content"])) {
-                return $responseData["message"]["content"];
+                // Clean the response to remove <think></think> tags
+                return $this->cleanResponse($responseData["message"]["content"]);
             } else {
                 throw new Exception("Unexpected API response format");
             }
