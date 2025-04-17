@@ -88,11 +88,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Azure OpenAI Settings
+    |--------------------------------------------------------------------------
+    |
+    | Settings for Azure OpenAI integration.
+    |
+    | endpoint: Your Azure OpenAI resource endpoint
+    | api_key: Your Azure OpenAI API key
+    | deployment: Your Azure OpenAI deployment ID
+    | api_version: Azure OpenAI API version (default: 2023-05-15)
+    |
+    */
+    'azure_endpoint' => env('AZURE_OPENAI_ENDPOINT', ''),
+    'azure_api_key' => env('AZURE_OPENAI_API_KEY', ''),
+    'azure_deployment' => env('AZURE_OPENAI_DEPLOYMENT', ''),
+    'azure_api_version' => env('AZURE_OPENAI_API_VERSION', '2023-05-15'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Default API Provider
     |--------------------------------------------------------------------------
     |
     | The default API provider to use for generating documentation.
-    | Supported values: 'openai', 'ollama', 'claude', 'gemini'
+    | Supported values: 'openai', 'ollama', 'claude', 'gemini', 'azure'
     |
     */
     'default_api_provider' => env('DOCUDOODLE_API_PROVIDER', 'openai'),

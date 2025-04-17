@@ -20,8 +20,9 @@ If you want to see what the output of some documentation looks like, check out t
 ## Features
 
 - **Automatic Documentation Generation**: Effortlessly generates documentation for PHP files by analyzing their content.
-- **Flexible AI Integration**: Choose between OpenAI's powerful cloud API, Claude API, Google's Gemini API, or run locally with Ollama models for complete privacy.
+- **Flexible AI Integration**: Choose between OpenAI's powerful cloud API, Azure OpenAI, Claude API, Google's Gemini API, or run locally with Ollama models for complete privacy.
 - **Ollama Support**: Generate documentation completely offline using your own local Ollama models - perfect for private codebases or when you need to work without an internet connection.
+- **Azure OpenAI Support**: Use Microsoft's Azure OpenAI service for documentation generation with enterprise-grade security and compliance.
 - **Customizable**: Easily configure source directories, output folders, and other settings to match your workflow.
 - **Command-Line Interface**: Includes a simple command-line script for quick documentation generation.
 
@@ -67,6 +68,15 @@ Set your Claude API key here or in your `.env` file as `CLAUDE_API_KEY`.
 ```
 Set your Gemini API key here or in your `.env` file as `GEMINI_API_KEY`.
 
+### Azure OpenAI Settings
+```php
+'azure_endpoint' => env('AZURE_OPENAI_ENDPOINT', ''),
+'azure_api_key' => env('AZURE_OPENAI_API_KEY', ''),
+'azure_deployment' => env('AZURE_OPENAI_DEPLOYMENT', ''),
+'azure_api_version' => env('AZURE_OPENAI_API_VERSION', '2023-05-15'),
+```
+Configure Azure OpenAI integration. You need to provide the endpoint URL, API key, deployment ID, and optionally the API version if using Azure as your API provider.
+
 ### Model Selection
 ```php
 'default_model' => env('DOCUDOODLE_MODEL', 'gpt-4o-mini'),
@@ -77,7 +87,7 @@ Choose which model to use. The default is `gpt-4o-mini` for OpenAI, but you can 
 ```php
 'default_api_provider' => env('DOCUDOODLE_API_PROVIDER', 'openai'),
 ```
-Choose which API provider to use: 'openai' for cloud-based generation, 'claude' for Claude API, 'gemini' for Gemini API, or 'ollama' for local generation. Set in your `.env` file with `DOCUDOODLE_API_PROVIDER`.
+Choose which API provider to use: 'openai' for cloud-based generation, 'azure' for Azure OpenAI, 'claude' for Claude API, 'gemini' for Gemini API, or 'ollama' for local generation. Set in your `.env` file with `DOCUDOODLE_API_PROVIDER`.
 
 ### Ollama Configuration
 ```php
@@ -146,6 +156,28 @@ Then specify the custom template path when initializing Docudoodle:
 $docudoodle = new Docudoodle(
     promptTemplate: '/path/to/your/custom-template.md'
 );
+```
+
+## Using Azure OpenAI
+
+To generate documentation using Azure OpenAI:
+
+1. Set up your Azure configuration in the `.env` file:
+```
+AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com
+AZURE_OPENAI_API_KEY=your-api-key
+AZURE_OPENAI_DEPLOYMENT=your-deployment-id
+DOCUDOODLE_API_PROVIDER=azure
+```
+
+2. Run the command:
+```
+php artisan docudoodle:generate
+```
+
+You can also specify Azure parameters directly in the command:
+```
+php artisan docudoodle:generate --api-provider=azure --azure-endpoint=https://your-resource.openai.azure.com --azure-deployment=your-deployment
 ```
 
 ## Running Tests
