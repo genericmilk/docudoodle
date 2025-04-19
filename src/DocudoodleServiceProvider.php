@@ -4,7 +4,7 @@ namespace Docudoodle;
 
 use Illuminate\Support\ServiceProvider;
 use Docudoodle\Commands\GenerateDocsCommand;
-
+use Docudoodle\Commands\BuildCacheCommand;
 class DocudoodleServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +17,7 @@ class DocudoodleServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 GenerateDocsCommand::class,
+                BuildCacheCommand::class,
             ]);
             
             $this->publishes([

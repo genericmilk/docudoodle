@@ -96,4 +96,19 @@ return [
     |
     */
     'default_api_provider' => env('DOCUDOODLE_API_PROVIDER', 'openai'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Settings
+    |--------------------------------------------------------------------------
+    |
+    | Configure the caching mechanism to skip unchanged files.
+    |
+    | use_cache: Enable or disable caching (default: true).
+    | cache_file_path: Absolute path to the cache file. If null or empty,
+    |                  it defaults to '.docudoodle_cache.json' inside the output directory.
+    |
+    */
+    'use_cache' => env('DOCUDOODLE_USE_CACHE', true),
+    'cache_file_path' => env('DOCUDOODLE_CACHE_PATH', null),
 ];

@@ -110,6 +110,45 @@ You can publish the configuration file to your project using:
 php artisan vendor:publish --tag=docudoodle-config
 ```
 
+## Caching
+
+To improve performance and reduce API calls on subsequent runs, Docudoodle implements a caching mechanism.
+
+**How it works:**
+
+1.  When a source file is processed, a hash of its content is calculated.
+2.  This hash is stored in a cache file (`.docudoodle_cache.json` by default) alongside a hash representing the relevant parts of the configuration (model, prompt template, API provider).
+3.  On the next run:
+    *   The overall configuration hash is checked. If it differs, the cache is invalidated, and all files are reprocessed.
+    *   If the configuration hash matches, the content hash of each source file is compared to the stored hash.
+    *   Files with matching hashes are skipped.
+    *   Files with different hashes or files not found in the cache are processed, and the cache is updated.
+4.  **Orphan Cleanup:** If a source file is deleted, Docudoodle detects this and removes its corresponding documentation file from the output directory and its entry from the cache.
+
+**Configuration:**
+
+You can control caching via `config/docudoodle.php`:
+
+-   `use_cache` (boolean, default: `true`): Set to `false` to disable the caching mechanism entirely.
+-   `cache_file_path` (string|null, default: `null`): Specifies the **absolute path** to the cache file. If `null` or empty, it defaults to `.docudoodle_cache.json` inside the configured `output_dir`.
+
+**Command Line Options:**
+
+-   `--no-cache`: Disables caching for this run, forcing reprocessing of all files. This overrides the `use_cache` config setting.
+-   `--cache-path="/path/to/your/cache.json"`: Specifies a custom absolute path for the cache file for this run, overriding the `cache_file_path` config setting.
+
+**Building an Initial Cache:**
+
+If you have previously generated documentation without the caching feature enabled, you can run the following command to build an initial cache file based on your existing source files and their corresponding documentation files:
+
+```bash
+php artisan docudoodle:build-cache
+```
+
+This command scans your source directories, checks if a matching `.md` file exists in your output directory, and if so, calculates the hash of the source file and adds it to the cache. It uses your current configuration (`model`, `prompt_template`, etc.) to calculate the `_config_hash`.
+
+You can also use the `--source`, `--output`, and `--cache-path` options with this command if they differ from your configuration.
+
 ## Template Variables
 
 When creating custom prompt templates for documentation generation, you can use the following variables:
