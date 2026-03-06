@@ -100,8 +100,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        // Mock curl_close to do nothing
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         // Mock curl_init to return a dummy resource (or handle)
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init()); // Return a real dummy handle
         // Mock curl_setopt_array/curl_setopt to do nothing (or check options if needed)
@@ -157,7 +155,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -241,7 +238,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -316,7 +312,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -395,7 +390,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -471,7 +465,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -538,7 +531,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -571,7 +563,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 
@@ -611,7 +602,6 @@ class CachingTest extends TestCase
         $curlExecMock = $this->getFunctionMock('Docudoodle', 'curl_exec');
         $curlErrnoMock = $this->getFunctionMock('Docudoodle', 'curl_errno');
         $curlErrorMock = $this->getFunctionMock('Docudoodle', 'curl_error');
-        $this->getFunctionMock('Docudoodle', 'curl_close')->expects($this->any());
         $this->getFunctionMock('Docudoodle', 'curl_init')->expects($this->any())->willReturn(curl_init());
         $this->getFunctionMock('Docudoodle', 'curl_setopt_array')->expects($this->any());
 

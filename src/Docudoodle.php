@@ -850,7 +850,6 @@ class Docudoodle
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
             }
-            curl_close($ch);
 
             $responseData = json_decode($response, true);
 
@@ -1015,7 +1014,6 @@ class Docudoodle
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
             }
-            curl_close($ch);
 
             $responseData = json_decode($response, true);
 
@@ -1076,7 +1074,6 @@ class Docudoodle
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
             }
-            curl_close($ch);
 
             $responseData = json_decode($response, true);
 
@@ -1135,7 +1132,6 @@ class Docudoodle
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
             }
-            curl_close($ch);
 
             $responseData = json_decode($response, true);
 
@@ -1192,7 +1188,6 @@ class Docudoodle
             if (curl_errno($ch)) {
                 throw new Exception(curl_error($ch));
             }
-            curl_close($ch);
 
             $responseData = json_decode($response, true);
 
