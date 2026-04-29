@@ -2,7 +2,7 @@
     <img src="docudoodle.png" width="200" />	
 </p>
 <h1 align="center">
-    Docudoodle v2.2.0
+    Docudoodle v2.3.0
 </h1>
 
 This is Docudoodle! 👋 The PHP documentation generator that analyzes your codebase and creates comprehensive documentation using AI. It's perfect for helping you and your team understand your code better through detailed insights into your application's structure and functionality.

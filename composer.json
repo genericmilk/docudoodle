@@ -2,7 +2,7 @@
 	"name": "genericmilk/docudoodle",
 	"description": "Generate documentation for your Laravel application using OpenAI",
 	"type": "library",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"require": {
 		"php": "^7.3|^8.0",
 		"illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
